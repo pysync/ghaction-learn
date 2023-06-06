@@ -17,9 +17,19 @@ jobs:
           SECRETS_VARS: ${{ toJson(secrets) }}
         run: echo "$SECRETS_VARS"
       
-      - name: Dump Env variables from env config
-        run: echo "Value of home url is $ENV_HOME_PAGE_URL"
-        
+      - name: Dump Secret Env variables from env config 1
+        env:
+          API_KEY_XX: ${{ secrets.API_KEY_XX}}
+        run: echo "Value of home url is $API_KEY_XX"
+      
+      - name: Dump Secret Env variables from env config 2
+        env:
+          API_KEY_YYY: ${{ secrets.API_KEY_YYY}}
+        run: echo "Value of home url is $API_KEY_YYY"
+      
+      - name: Dump Context 
+        run: echo "$GITHUB_CONTEXT"
+
       - name: Show default environment variables
         run: |
           echo "The job_id is: $GITHUB_JOB"   # reference the default environment variables
