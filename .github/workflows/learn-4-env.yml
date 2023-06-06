@@ -6,24 +6,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - name: Install Bats
-        run: npm install -g bats
-      - name: Check Bat Version
-        run: bats -v
-      - name: Finish Echo
-        run: echo Hello, world! -> Finish
+      
       - name: Echo Env Var
         env:
            NODE_VER: 16
         run: echo "Value of Env is $NODE_VER"
 
-      - name: "Dump Secret Value"
+      - name: "Dump Secret Value From Secret Config"
         env:
           SECRETS_VARS: ${{ toJson(secrets) }}
         run: echo "$SECRETS_VARS"
+      
+      - name: Dump Env variables from env config
+        run: echo "Value of home url is $ENV_HOME_PAGE_URL"
         
       - name: Show default environment variables
         run: |
@@ -32,8 +27,4 @@ jobs:
           echo "The run id is: $GITHUB_RUN_ID"
           echo "The GitHub Actor's username is: $GITHUB_ACTOR"
           echo "GitHub SHA: $GITHUB_SHA"
-
-      - name: Run From Script
-        run: ./.github/scripts/echo.sh
-        shell: bash
-    
+      
