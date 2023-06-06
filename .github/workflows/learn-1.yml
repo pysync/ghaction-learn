@@ -15,3 +15,11 @@ jobs:
         run: bats -v
       - name: Finish Echo
         run: echo Hello, world! -> Finish
+      - name: Echo Env Var
+        run: echo Value of Env
+        env:
+           NODE_VER: 16
+      - name: Run From Script
+        run: ./github/scripts/echo.sh
+        shell: bash
+    
