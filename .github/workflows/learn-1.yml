@@ -1,0 +1,17 @@
+name: learn-github-actions-1
+run-name: ${{ github.actor }} is learning GitHub  1
+on: [push]
+jobs:
+  Check-Bat-Version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install Bats
+        run: npm install -g bats
+      - name: Check Bat Version
+        run: bats -v
+      - name: Finish Echo
+        run: echo Hello, world! -> Finish

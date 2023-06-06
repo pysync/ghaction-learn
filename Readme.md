@@ -5,5 +5,5 @@ create folder
 $ mkdir .github/workflows
 
 step 2:
-$ touch .github/workflows/github-actions-demo.yml
+$ touch .github/workflows/main.yml
 
